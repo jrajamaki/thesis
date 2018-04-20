@@ -65,9 +65,11 @@
 
 \mainmatter
 \chapter{Introduction}
-\textbf{PLAN:} Will be written later, about one to two page 
+\textbf{TODO:} Will be written later, about one to two page 
 
 \section{Thesis statement}
+\textbf{TODO:} More details about research goals and needs proper conclusion
+
 % intro: main objective
 The main objective of this thesis is to study spoof trading in Northern European stock exchanges. This research attempts to explain phenomena of spoof trading itself, market conditions in which manipulator is likely to commence spoof trading and examine differences of the orders that are utilised in spoof trading compared to regular stock market trading. 
 
@@ -96,7 +98,7 @@ In conclusion this thesis pursues following research goals:
 \end{enumerate}
 
 \section{Literature review}
-\textbf{PLAN:} Needs new ending, and more (technical) sources in comments
+\textbf{TODO:} Needs new ending, and more (technical) sources in comments
 
 % Allen and Gale's research
 Allen and Gale \parencite*{AllenGale1992} initially argued that under asymmetrical buy and sell liquidity of a stock, buy and sale orders lead to different price responses, which can create opportunities for profitable price manipulation. They developed theoretical framework to prove that an uninformed trader is able profit by commencing in transaction-based stock price manipulation. Uninformed trader does not possess any insider information about the asset. Transaction-based stock manipulation is based on influencing stock prices only through orders without doing any external actions such as misinforming other traders.
@@ -130,20 +132,19 @@ To date most of the spoofing behaviour research only concerns study of spoofing 
 % A Comparative Evaluation of Unsupervised Anomaly Detection Algorithms for Multivariate Data: goldstein_uchida_2016.PDF
 
 \section{Data}
-\textbf{PLAN:} Almost ready, about 3 pages
+\textbf{TODO:} Provide more details about data
 
-% introduction
-This thesis utilises stock market data in Northern European exchanges to study spoofing behaviour. The data was provided by thesis director Professor Juho Kanninen from department of industrial management in Tampere University of Technology. 
-
-% introduce data
-For each stock data consists of daily message book and order book. Message books includes all the orders of a stock submitted to the exchange and order book data describes changes in order book during the day. In addition daily summaries of successful trades, submitted limit orders, and cancellations made by traders are provided, these summaries are derived from daily message books. For the most part the data of each stock was collected from 1.6.2010 to 31.5.2013, which results to the total of 765 trading days worth of data per stock. 
+% introduction of data
+This thesis utilises stock market data in Northern European exchanges to study spoofing behaviour. The data was provided by thesis director Professor Juho Kanninen from department of industrial management in Tampere University of Technology. The data of each stock was collected from 1.6.2010 to 31.5.2013, which results to the total of 765 trading days worth of data per stock. \textbf{QUESTION:} Is this date format correct?
 % FIX: Date format?
+
+% details of data
+For each stock data consists of daily message book and order book. Message books includes all the orders of a stock submitted to the exchange and order book data describes changes in order book during the day. In addition daily summaries of successful trades, submitted limit orders, and cancellations made by traders are provided. % FIX: More details
 
 \ctable[
 	caption={Stock information \autocite{OMX2017}.},
-	label={table:companies},
-]
-{llll}{}{
+	label={table:companies}]
+	{llll}{}{
 	\toprule
 	Name					& ISIN						& Ticker		& Market exchange	\\
 	\midrule
@@ -158,19 +159,16 @@ For each stock data consists of daily message book and order book. Message books
 \footnotetext{At the time of data gathering ISIN was SE0000101032, but due to stock split Atlas Copco A was assigned new ISIN \autocite{GlobeNewswire2018a}}.
 
 % introduce table
-Table \ref{table:companies} introduces detailed information of the companies researched in this thesis. Two of the companies are listed in OMX Nordic Helsinki, two in OMX Nordic Stockholm and one is listed in OMX Nordic Copenhagen exchanges, hence all the biggest northern European stock exchanges are covered.
+Table \ref{table:companies} introduces detailed information of the companies researched in this thesis. Two of the companies are listed in OMX Nordic Helsinki, two in OMX Nordic Stockholm and one is listed in OMX Nordic Copenhagen exchanges, hence all the biggest northern European stock exchanges are 
+covered.
 
 % Problem: small sample size
-However, within the exchanges sample size is very small. By November 2017 in total 320 companies were listed in OMX Nordic Stockholm, 53 companies in OMX Nordic Helsinki, and 137 companies in OMX Nordic Copenhagen \autocite{GlobeNewswire2018b}. For example in OMX Nordic Helsinki, the exchange with fewest listed stocks of mentioned three exchanges, two companies out of 53 is only coverage of few percentage points.
-
-% Consequences of small sample size
-Due to small sample size the predictive power of this study is low. Inference of spoofing behaviour in country-wise exchanges is limited, thus it is not possible to generalize the results and estimate the scale of spoofing behaviour in the exchanges. 
+However, within the exchanges sample size is very small. By November 2017 in total 320 companies were listed in OMX Nordic Stockholm, 53 companies in OMX Nordic Helsinki, and 137 companies in OMX Nordic Copenhagen \autocite{GlobeNewswire2018b}. For example in OMX Nordic Helsinki, the exchange with fewest listed stocks of mentioned three exchanges, two companies out of 53 is only coverage of few percentage points. Due to small sample size the predictive power of this study is low. Inference of spoofing behaviour in country-wise exchanges is limited, thus it is not possible to generalize the results and estimate the scale of spoofing behaviour in the exchanges. 
 
 \ctable[
 	caption={Stock information \autocite{OMX2017}.},
-	label={table:stocks},
-]
-{lcccc}{}{
+	label={table:stocks}]
+	{lcccc}{}{
 	\toprule
 						&				&			& \multicolumn{2}{c}{Daily mean}		\\
 	\cmidrule(r){4-5}
@@ -185,42 +183,36 @@ Due to small sample size the predictive power of this study is low. Inference of
 }
 
 % Limitations of data: similarity
-Stock-wise information of companies is presented in table \ref{table:stocks}. The table clearly shows similarity of data: market capitalizations, daily average prices (per currency), and daily trade volumes all are at the same magnitude. Similarity of data further hinders predictive power of this study, since the sample is not diverse, and thus does not represent all the stocks, which are much more diverse, in the stock exchanges very well.
+Stock-wise information of companies is presented in table \ref{table:stocks}. The table clearly shows similarity of data: market capitalizations, daily average prices (per currency), and daily trade volumes all are at the same magnitude. Similarity of data further hinders predictive power of this study. The sample is not diverse, and thus does not provide good sample of all the stocks, which are much more diverse.
 
 % Limitations of data: spoofing not very probable in this sample
 In addition to data similarity, all of the stocks' market capitalisations are relatively big, daily average prices rather expensive and the stocks are traded very actively. According to research, susceptible stocks to spoofing behaviour on the contrary tend to have lower market capitalisation and lower average price \autocite{LeeEomPark2009, AggarwalWu2006, MeiWuZhou2004}. As a consequence, the stocks in this research are not very probable targets of spoof order manipulators. 
 
 % Limitations of data: false positives
-Since the occurrences of spoofing behaviour is low, especially in this data set, false positives might over-populate 
-
-effectively reducing probability of detecting spoofing order behaviour.
-
-This limitation is further inflated because of rare occurrences of spoofing behaviour, findings of the study could easily be overwhelmed by high presentation of false positives.
-% TRUE? SOURCE? https://stats.stackexchange.com/questions/176384/do-underpowered-studies-have-increased-likelihood-of-false-positives
+Since the occurrences of spoofing behaviour is low, especially in this data set, false positives might over-populate findings effectively reducing the probability of detecting true spoof trading.
+% FIX: TRUE? SOURCE? https://stats.stackexchange.com/questions/176384/do-underpowered-studies-have-increased-likelihood-of-false-positives
 
 % Limitations of data: lack of user identity
 The most limiting constraint of the data is the lack of user identity. Trades in the daily order books have unique id, but the traders of the orders are not identified, thus destroying ability to track series of orders. As a result, it is not possible to establish logically valid patterns to study spoofing behaviour, instead each order has to be considered in isolation, only examining single order at time and determining whether it is spoofing order or not. 
 
 % Limitations of data: detection of intermarket manipulation
-This thesis only focuses on stock market, since only stock market data was provided for this research. As a consequence spoofing behaviour detection of intermarket manipulation is not possible. Manipulator might attempt to manipulate underlying of a derivative, e.g. submit spoofing orders at the stock market while gaining profits in derivatives of the  
-while gaining 
+This thesis only focuses on stock market, since only stock market data was provided for this research. As a consequence spoofing behaviour detection of intermarket manipulation is not possible. Manipulator might attempt to manipulate underlying of a derivative, e.g. submit spoofing orders at the stock market while gaining profits in derivatives of the manipulated assets.
 
 % Conclusion & study of factors affecting 
-In conclusion because of these limitations it is very unlikely to find spoofing behaviour in this data set, and further draw any interference how common spoofing behaviour is in Northern European stock market.  
-
-% Silver lining
-%How ever this study still is able to catch the factors that add to spoofing behaviour in trading data.
+In conclusion because of these limitations it is very unlikely to find spoofing behaviour in this data set, and further draw any interference how common spoofing behaviour is in Northern European stock market. However, if this thesis is able to capture spoofing trading, then it is rather probable that the spoof trading phenomena exists in Northern European stock markets.
 
 \chapter{Financial markets}
-\textbf{PLAN:} Overall introduction to financial markets, introduction of terms(or into glossary?) and such, at most 2 pages
-\textbf{QUESTION:} Is this information too basic to be included? Should I just assume reader knows this kind of information and write shorter introductory? Maybe include 2.2 spoof trading into first chapter and delete rest? However I reckon 2.1 Market Micro-structure chapter is essential in case reader is not familiar with the field.
- 
+\textbf{PLAN:} Overall introduction to financial markets, introduction of order types and other essential financial terms
+\textbf{QUESTION:} Is this information too basic to be included? Should I just assume reader knows this kind of information or just add necessary financial terms into glossary and write shorter introductory?
+
 % introduction
 
 % categorization of financial markets
 Financial markets are divided into exchange-traded markets and over-the-counter (OTC) markets. In exchange markets market participants trade exchange standardized contracts while in OTC markets two parties define contracts by themselves. \autocite{Hull2017} Exchange markets are mainly divided by their geographical location, but also further categorized by the instruments they trade. Most common types of exchange markets include stock markets, bond markets, and various derivatives markets such as futures markets and options markets.
 
-% type of orders
+% this study is about stock markets
+
+% type of orders in equity markets
 In exchange-traded markets market participants submit limit orders or market orders to the exchange. In limit orders trader decides 
 
 \begin{itemize}
@@ -230,20 +222,16 @@ In exchange-traded markets market participants submit limit orders or market ord
 	\item \textit{Price} of the stock trader is willing to trade at.
 \end{itemize}
 
-Other order types are also available in OMX Markets. 
+Other order types are also available in OMX Markets but everything stems from these two kinds of orders.
 
-Market order is executed immediately at the best possible price (for 
-- explanation of how market exchanges work
-- market order and limit order
-- four? pictures of stock trading: vanha tilanne, uusi limit order, uusi market order, uusi tilanne 
-- price forming process
-
-% ?? 
-In addition study of OTC markets is complex task since traded-contracts are not standardized, thus price discovery process is not as transparent nor informative as in exchange-traded markets.
+Trading periods: Pre-open session, crossing, continuous trading, pre-close, post-trading, after-market
 
 \section{Market micro-structure}
-\textbf{PLAN:} Explain how trading works, how the price of an asset is formed, about 3-5 pages
+\textbf{PLAN:} Explain how trading works, how the price of an asset is formed
 % intro
+
+- four? pictures of stock trading: vanha tilanne, uusi limit order, uusi market order, uusi tilanne 
+- price forming process
 
 % Market functions: liquidity and esp. Price discovery 
 % FIX: SOURCE 
@@ -256,7 +244,7 @@ In addition study of OTC markets is complex task since traded-contracts are not 
 % O'Hara ??
 
 \section{Spoof trading}
-\textbf{PLAN:} Explain spoof trading, confirm its' illegality, define spoofing order, 4-6 pages
+\textbf{PLAN:} Explain spoof trading, confirm its' illegality, define spoofing order
 
 % Intro
 Market manipulation is considered as a method of artificially affecting price of a security. FIX: SOURCE???
@@ -306,21 +294,21 @@ In conclusion, regardless of whether applying further categorization by Kong and
 % Difference to cornering the market
 
 \chapter{Unsupervised anomaly detection}
-\textbf{PLAN:} Overall introduction to anomaly detection, 3-5 pages
+\textbf{PLAN:} Overall introduction to anomaly detection
 Intro to:
 - what is anomaly detection
 - detection methods: supervised, semi-supervised and unsupervised anomaly detection
 - anomaly types: global and local
 
 \section{Application constraints}
-\textbf{PLAN:} Note characteristics of anomaly detection in stock exchanges in order to be applicable, (time series, big data), 1 page
+\textbf{PLAN:} Note characteristics of anomaly detection in stock exchanges in order to be applicable, (time series, big data)
 
 \subsection{Detection in time series}
-\textbf{PLAN:} time-dependency and seasonality (non-stationary), transformation of data (paper from English Uni by Chinese), 2-3 pages
+\textbf{PLAN:} time-dependency and seasonality (non-stationary), transformation of data (paper from English Uni by Chinese)
 - point anomalies, collective anomalies, contextual anomalies
 
 \subsection{Detection in big data}
-\textbf{PLAN:} Issues with big data, 2-4 pages
+\textbf{PLAN:} Issues with big data
 % Introduction
 Stock exchange data is prime example of XXX with big data issues.
 
@@ -357,7 +345,7 @@ Application field of stock exchanges ticks off two of the three defining charact
 \end{enumerate}
 
 \chapter{Results}
-\textbf{PLAN:} Explain practical research process, maybe 2-4 pages
+\textbf{PLAN:} Explain practical research process
 - imbalance in demand and supply lead to favourable price change which can be further exploited
 
 In the context of this research, a case of spoofing trading is considered as follows: Firstly manipulator in order to distort asset prices submits a limit order to supply fake information to the market about the asset. Then after favourable change in price of the asset, manipulator makes her real trade. Subsequently she cancels original limit order hoping that the price will recover, and she is able to ???
@@ -370,7 +358,7 @@ In this study it is not possible to identify these two separate orders by trader
 
 Since it is not possible to determine whether manipulator was or was not able to gain profit through her manipulation, the main phase of this thesis is study are there cases in the data where trade imbalances lead to predictable price behaviour.
 
-\textbf{PLAN:} Introduction of results case by case, 2-4 pages per stock
+\textbf{PLAN:} Results case by case
 \section{Atlas Copco A}
 \section{Metso Oyj}
 \section{Nokian Renkaat Oyj}
@@ -378,10 +366,10 @@ Since it is not possible to determine whether manipulator was or was not able to
 \section{Volvo B}
 
 \section{Summary}
-\textbf{PLAN:} Write out summary of cases, about 4 pages
+\textbf{PLAN:} Write out summary of cases
 
 \chapter{Conclusion}
-\textbf{PLAN:} Final conclusion: results, generalization, further research, 2-3 pages
+\textbf{PLAN:} Final conclusion: results, generalization, further research
 
 % all entries that are cited automatically appear in the bibliography
 \begingroup
