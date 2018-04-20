@@ -1,0 +1,388 @@
+\documentclass{tut-thesis}
+% packages
+\usepackage[backend=biber,
+			bibstyle=authoryear,
+			citestyle=authoryear-comp]{biblatex}
+\usepackage{placeins} % defines \FloatBarrier to keep floats in proper sections
+\usepackage{paralist} % defines in-line environments for lists
+\usepackage{graphicx} % enhanced support for graphics
+\usepackage{microtype} % avoid badboxes with typewriter font
+\usepackage{csquotes} % handles quotations
+\usepackage{tikz} % 'draw' good looking graphics from within latex
+\usepackage{ctable} % advanced tabular environment
+\usepackage{amsmath} % math typesetting
+\usepackage{amsfonts} % fonts needed in mathmode
+\usepackage[chapter]{algorithm} % algorithmic environment
+\usepackage[math]{blindtext} % generates pointles text for testing purposes
+\usepackage{enumitem} % for list modifications
+%\usepackage{chngcntr}
+%\counterwithout{table}{chapter} % single running numbering instead of chapter.table_nr
+
+% preparatory content
+%\makeglossaries
+%\loadglsentries{glossary} % load glossary entries from the file glossary.tex
+\addbibresource{bibliography.bib} % add bibliography resource
+
+% front page information
+% macros with two arguments have the form
+% \macro[secondary language]{main language}
+% where the secondary language is optional
+\author 		{Janne Rajamäki}
+\title 		[Potentiaalisten valekauppojen tunnistaminen]
+			{Detecting potential spoofing behaviour}
+\thesistype	[Diplomityö] 						{Master of Science Thesis}
+\keywords	[avainsanat]							{keywords}
+\programme	[Tietotekniikan DI-tutkinto-ohjelma]	{Master's Degree Programme in Information Technology}
+\major		[Ohjelmistotuotanto]					{Software engineering}
+\examiner	[Professori Kari Systä]				{Professor Kari Systä}
+\extrainfo 	{Examiner and topic approved by the Faculty Council of the Faculty of Computing and Electrical Engineering on Day~Month~Year}
+\date 		{\Today}		% in the final version this should be set to the date 
+						% after which no changes were made e.g. \DTMDate{2016-04-07}
+\location 	{Tampere}
+
+\begin{document}
+\maketitle
+
+\frontmatter
+\begin{abstract}
+	\blindtext
+\end{abstract}
+
+\begin{otherlanguage}{finnish}
+\begin{abstract}
+	\blindtext{finnish}
+\end{abstract}
+\end{otherlanguage}
+
+\tableofcontents
+%\listoftables
+%\listoffigures
+%\listofalgorithms
+
+% if your glossary has long entries, you can adjust the entrywidth
+% using \setlength{\glsentrywidth}{<width>}, where <width> is e.g. 7em
+%\printglossary
+
+\mainmatter
+\chapter{Introduction}
+\textbf{PLAN:} Will be written later, about one page 
+In spoof trading, manipulator attempts to influence price of an asset through artificial trade orders which enables manipulator to gain profit.
+
+\section{Thesis statement}
+\textbf{PLAN:} About 2-3 pages
+
+% intro: main objective
+The main objective of this thesis is to study phenomena of spoof trading in Northern European stock exchanges. This research attempts to explain market conditions in which manipulator is like to commence spoof trading and examine differences of the orders that are utilised in spoof trading compared to regular stock market trading. 
+
+% WRONG PLACE??
+%The research will utilise trading data to detect and identify spoof trading, and then use regular stock market behaviour as a benchmark to estimate how spoof trading differs.
+
+% existance -> examination
+At first it is necessary to confirm whether spoof trading occurs in Northern European stock exchanges, only then it is possible to further examine spoof trading. 
+
+% limitation: confirmation of spoof trading could too challenging since traders' intent is hard to quantify
+In spoof trading trader intentionally submits deceptive trade order into exchange in order to provide false information about demand or supply of a security. The intention of an order is difficult to prove via data analytical means, since any kind of trade is permitted per se, even if the trade does not conform to common trading behaviour or is even harmful to the trader. FIX: As a result the assessment of order's genuineness through quantitative analysis is always at the mercy of an inspector.
+
+% modification of plan: study of circumstances that would enable spoof trading
+For above reason, estimate about existence of spoof trading is at best vague and it is not possible with data analytical means to truly confirm spoof trading phenomena. Hence, it is necessary to study logical connections that are interconnected with spoof trading. In spoof trading the most defining aspect is the link between trade imbalance and price changes, as manipulator attempts to influence price of a security through deceptive orders.
+
+% research goal: do trade imbalances cause price shifts
+This thesis will explore whether trade imbalances do affect security prices, more precisely whether oversupply of an asset will decrease price of the asset and under-supply of an asset will increase price of the asset, as per law of supply and demand. Any such correlation reveals possibility for potential trade spoofing, even if the price fluctuations were not exploited. 
+
+% research goal: determine existence of spoof trading
+The next step is to attempt to determine whether spoof trading occurs in Northern European stock exchanges. 
+
+% research goal: explore market circumstances & study spoof orders
+In case spoof trading was detected, the last step is to study the market circumstances in which spoof trading is likely to occur and the spoof orders.
+
+% Conclusion: list of steps as in research plan
+This thesis pursues following research goals:
+\begin{enumerate}
+	\item Study whether trade imbalances lead to price changes.
+	\item Attempt to identify spoof trading and confirm its' existence in Northern European stock market.
+	\item Describe the market situations in which spoof trading is likely to happen.
+	\item Study how spoof trading differs from regular trading.
+\end{enumerate}
+
+\section{Literature review}
+\textbf{PLAN:} At least add more details about the research, also needs new ending, about 3-4 pages
+
+Allen and Gale \parencite*{AllenGale1992} initially argued that under asymmetrical sale and purchase liquidity, buy and sale orders lead to different price responses, which can create opportunities for profitable price manipulation. They developed theoretical framework to prove that an uninformed trader is able profit by commencing in transaction-based stock price manipulation. Transaction-based stock manipulation means that manipulator is able to affect stock prices only through her orders. \autocite{AllenGale1992}
+
+Jarrow \parencite*{Jarrow1992} studied market manipulation strategies by large traders, showing large traders, even if they do not possess insider information, have enough market power to be able to manipulate market prices through their sheer size of orders. 
+
+Numerous empirical research has shown market manipulation is worldwide phenomena: Aggarwal and Wu \parencite*{AggarwalWu2006}, Aktaş and Doğanay (2006, see \cite{OgutDoganayAktas2009}), Lee at al. \parencite*{LeeEomPark2009}, and Kong and Wang \parencite*{KongWang2014} showed evidence of spoof order manipulation in US, Turkey, Korea, and China respectively.
+
+Aggarwal and Wu \parencite*{AggarwalWu2006} extended framework developed by Allen and Gale and studied how information seekers affect trading. They found that informed parties, corporate insiders, brokers, underwriters, large shareholders and market makers, may worse market efficiency and are more likely to be manipulators. When studying U.S equity market, they found that manipulating mostly happens in small, illiquid and inefficient markets.
+
+Lee at al \parencite*{LeeEomPark2009} studied buy-orders in KRX Korea Exchange. They found the susceptible stocks to spoofing behaviour tend to have higher return volatility, lower market capitalization, lower price levels and lower managerial transparency. Also when exchange stopped disclosing the total quantity of buy and sell sides, so that spoofing orders could no longer be used to mislead investors, spoofing dramatically declined. In general spoofing orders were much bigger than typical orders and usually at least 10 ticks away from the current price, thus executability of the orders were extremely low, consequently presenting the intent of manipulators was real. \autocite{LeeEomPark2009}
+
+However in the study of Lee et al. spoofing order was defined as "\textit{a bid/ask with a size at least twice the previous day’s average order size and with an order price at least 6 ticks away from the market price, followed by an order on the opposite side of the market, and subsequently followed by the withdrawal of the first order}" \autocite[p. 11]{LeeEomPark2009}. This kind of precise definition of spoofing order surely affects the results they will gather from their analysis.
+
+Kong and Wang \parencite*{KongWang2014} found that market statistics of manipulation cases, like price, volume, turnover ratio volatility and liquidity, were in accordance with previous studies. Also market manipulators tend to target specific time periods of greater information asymmetry, then manipulators are able to present themselves as informed traders and affect behaviour of other investors in the short-term, in the long-term the effects of manipulation disappear. \autocite{KongWang2014}
+
+In the previously mentioned studies data was labelled in advance or labelled using fixed rules as manipulative or non-manipulative. Lee et al. used rule-based approach, other studies used court rulings to define manipulative trades. The subjects of studies were only "bad" manipulators who were caught or classified using arbitrary manual rules. None of the studies adopted pure data analytical viewpoint of detecting spoofing behaviour in stock-wide context, which I will study in my thesis.
+
+% limitation in current research, need to merge with previous paragraph
+To date most of the spoofing behaviour research only concerns study of spoofing orders. The orders are deterministically identified either as normal stock market behaviour or spoofing behaviour, then spoofing orders' characteristics and impact is further studied. Mostly used identification methods are technical rule-based methods or based on court rulings orders are identified as illegal spoofing behaviour. This however limits the study of  
+
+\section{Data}
+\textbf{PLAN:} Almost ready, about 3 pages
+
+% introduction
+This thesis utilises stock market data in Northern European exchanges to study spoofing behaviour. The data was provided by thesis director Professor Juho Kanninen from department of industrial management in Tampere University of Technology. 
+
+% introduce data
+For each stock data consists of daily message book and order book. Message books includes all the orders of a stock submitted to the exchange and order book data describes changes in order book during the day. In addition daily summaries of successful trades, submitted limit orders, and cancellations made by traders are provided, these summaries are derived from daily message books. For the most part the data of each stock was collected from 1.6.2010 to 31.5.2013, which results to the total of 765 trading days worth of data per stock. 
+% FIX: Date format?
+
+\ctable[
+	caption={Stock information \autocite{OMX2017}.},
+	label={table:companies},
+]
+{llll}{}{
+	\toprule
+	Name					& ISIN						& Ticker		& Market exchange	\\
+	\midrule
+	Atlas Copco A		& SE0006886750\footnotemark	& ATCO A		& OMX Stockholm		\\
+	Metso Oyj			& FI0009007835				& METSO		& OMX Helsinki		\\
+	Nokian Renkaat Oyj	& FI0009005318				& NRE1V		& OMX Helsinki		\\
+	Vestas Wind Systems	& DK0010268606				& VWS		& OMX Copenhagen		\\
+	Volvo B				& SE0000115446				& VOLV B		& OMX Stockholm		\\
+	\bottomrule
+}
+
+\footnotetext{At the time of data gathering ISIN was SE0000101032, but due to stock split Atlas Copco A was assigned new ISIN \autocite{GlobeNewswire2018a}}.
+
+% introduce table
+Table \ref{table:companies} introduces detailed information of the companies researched in this thesis. Two of the companies are listed in OMX Nordic Helsinki, two in OMX Nordic Stockholm and one is listed in OMX Nordic Copenhagen exchanges, hence all the biggest northern European stock exchanges are covered.
+
+% Problem: small sample size
+However, within the exchanges sample size is very small. By November 2017 in total 320 companies were listed in OMX Nordic Stockholm, 53 companies in OMX Nordic Helsinki, and 137 companies in OMX Nordic Copenhagen \autocite{GlobeNewswire2018b}. For example in OMX Nordic Helsinki, the exchange with fewest listed stocks of mentioned three exchanges, two companies out of 53 is only coverage of few percentage points.
+
+% Consequences of small sample size
+Due to small sample size the predictive power of this study is low. Inference of spoofing behaviour in country-wise exchanges is limited, thus it is not possible to generalize the results and estimate the scale of spoofing behaviour in the exchanges. 
+
+\ctable[
+	caption={Stock information \autocite{OMX2017}.},
+	label={table:stocks},
+]
+{lcccc}{}{
+	\toprule
+						&				&			& \multicolumn{2}{c}{Daily mean}		\\
+	\cmidrule(r){4-5}
+	Name					& Market cap		& Currency	& Avg price		& Volume				\\
+	\midrule
+	Atlas Copco A		& Large			& SEK		& 153.59			& $3.9 \cdot 10^6$	\\
+	Metso Oyj			& Mid			& EUR		& 31.96			& $0.8 \cdot 10^6$	\\
+	Nokian Renkaat Oyj	& Large			& EUR		& 29.36			& $0.7 \cdot 10^6$	\\
+	Vestas Wind Systems	& Large			& DKK		& 110.07			& $2.3 \cdot 10^6$	\\
+	Volvo B				& Large			& SEK		& 92.66 			& $9.4 \cdot 10^6$	\\
+	\bottomrule
+}
+
+% Limitations of data: similarity
+Stock-wise information of companies is presented in table \ref{table:stocks}. The table clearly shows similarity of data: market capitalizations, daily average prices (per currency), and daily trade volumes all are at the same magnitude. Similarity of data further hinders predictive power of this study, since the sample is not diverse, and thus does not represent all the stocks, which are much more diverse, in the stock exchanges very well.
+
+% Limitations of data: spoofing not very probable in this sample
+In addition to data similarity, all of the stocks' market capitalisations are relatively big, daily average prices rather expensive and the stocks are traded very actively. According to research, susceptible stocks to spoofing behaviour on the contrary tend to have lower market capitalisation and lower average price \autocite{LeeEomPark2009, AggarwalWu2006, MeiWuZhou2004}. As a consequence, the stocks in this research are not very probable targets of spoof order manipulators. 
+
+% Limitations of data: false positives
+Since the occurrences of spoofing behaviour is low, especially in this data set, false positives might over-populate 
+
+effectively reducing probability of detecting spoofing order behaviour.
+
+This limitation is further inflated because of rare occurrences of spoofing behaviour, findings of the study could easily be overwhelmed by high presentation of false positives.
+% TRUE? SOURCE? https://stats.stackexchange.com/questions/176384/do-underpowered-studies-have-increased-likelihood-of-false-positives
+
+% Limitations of data: lack of user identity
+The most limiting constraint of the data is the lack of user identity. Trades in the daily order books have unique id, but the traders of the orders are not identified, thus destroying ability to track series of orders. As a result, it is not possible to establish logically valid patterns to study spoofing behaviour, instead each order has to be considered in isolation, only examining single order at time and determining whether it is spoofing order or not. 
+
+% Limitations of data: detection of intermarket manipulation
+This thesis only focuses on stock market, since only stock market data was provided for this research. As a consequence spoofing behaviour detection of intermarket manipulation is not possible. Manipulator might attempt to manipulate underlying of a derivative, e.g. submit spoofing orders at the stock market while gaining profits in derivatives of the  
+while gaining 
+
+% Conclusion & study of factors affecting 
+In conclusion because of these limitations it is very unlikely to find spoofing behaviour in this data set, and further draw any interference how common spoofing behaviour is in Northern European stock market.  
+
+% Silver lining
+%How ever this study still is able to catch the factors that add to spoofing behaviour in trading data.
+
+\chapter{Financial markets}
+\textbf{PLAN:} Overall introduction to financial markets, introduction of terms(or into glossary?) and such, at most 2 pages
+\textbf{QUESTION:} Is this information too basic to be included? Should I just assume reader knows this kind of information and write shorter introductory? Maybe include 2.2 spoof trading into first chapter and delete rest? However I reckon 2.1 Market Micro-structure chapter is essential in case reader is not familiar with the field.
+ 
+% introduction
+
+% categorization of financial markets
+Financial markets are divided into exchange-traded markets and over-the-counter (OTC) markets. In exchange markets market participants trade exchange standardized contracts while in OTC markets two parties define contracts by themselves. \autocite{Hull2017} Exchange markets are mainly divided by their geographical location, but also further categorized by the instruments they trade. Most common types of exchange markets include stock markets, bond markets, and various derivatives markets such as futures markets and options markets.
+
+% type of orders
+In exchange-traded markets market participants submit limit orders or market orders to the exchange. In limit orders trader decides 
+
+\begin{itemize}
+	\item \textit{Stock} that trader wants to trade.
+	\item \textit{Order type} 
+	\item \textit{Amount} of the stock that trader wants to trade.
+	\item \textit{Price} of the stock trader is willing to trade at.
+\end{itemize}
+
+Other order types are also available in OMX Markets. 
+
+Market order is executed immediately at the best possible price (for 
+- explanation of how market exchanges work
+- market order and limit order
+- four? pictures of stock trading: vanha tilanne, uusi limit order, uusi market order, uusi tilanne 
+- price forming process
+
+% ?? 
+In addition study of OTC markets is complex task since traded-contracts are not standardized, thus price discovery process is not as transparent nor informative as in exchange-traded markets.
+
+\section{Market micro-structure}
+\textbf{PLAN:} Explain how trading works, how the price of an asset is formed, about 3-5 pages
+% intro
+
+% Market functions: liquidity and esp. Price discovery 
+% FIX: SOURCE 
+% 1) http://www.nasdaq.com/investing/glossary/p/price-discovery-process
+% 2) http://www.bfjlaward.com/pdf/25919/124-132_Alan_JPM_1021w.pdf
+
+% GOOD REFERENCE:
+% https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwj19sTHxb3YAhVFJJQKHeY5AucQFgglMAA&url=http%3A%2F%2Fwww.springer.com%2Fcda%2Fcontent%2Fdocument%2Fcda_downloaddocument%2F9783540888017-c1.pdf%3FSGWID%3D0-0-45-690899-p173864254&usg=AOvVaw2XFH8kToKPU-xiEfgJLpye
+% https://www.springerprofessional.de/en/introduction-to-market-microstructure/3026632
+% O'Hara ??
+
+\section{Spoof trading}
+\textbf{PLAN:} Explain spoof trading, confirm its' illegality, define spoofing order, 4-6 pages
+
+% Intro
+Market manipulation is considered as a method of artificially affecting price of a security. FIX: SOURCE???
+
+% A generic price manipulation tactic is defined as artificially pushing up (or down) the bid (or ask) price of a security and taking advantage of the shifted price so as to make a profit [12].
+
+% http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=A9C1F188D9BEC56C746F17B8104A6161?doi=10.1.1.491.9352&rep=rep1&type=pdf
+\autocite{KyleViswanathan2008}
+
+% Explanation of spoofing strategy
+In spoof trading manipulator attempts to simulate fake demand or supply for an asset and after other investors utilize this fake information in their trading, consequently causing price of the asset change, 
+
+% Description of successful spoof trading
+A successful case of spoof trading divides into following separate stages: manipulator feigns demand or supply of an asset, price of the assets distorts favourably for manipulator, manipulator makes her genuine trade at the distorted price, manipulator cancels her original fake order, markets adapt and price returns to normal, then manipulator is able to gain profit since she was able to dictate the price process of manipulated asset.
+
+% Definition of spoof order by Lee et al.
+Lee at al \parencite*{} defines spoofing order as "\textit{a bid/ask with a size at least twice the previous day’s average order size and with an order price at least 6 ticks\footnotemark away from the market price, followed by an order on the opposite side of the market, and subsequently followed by the withdrawal of the first order}.
+
+\footnotetext{Tick size determines smallest allowed change in security price.}
+
+spoofing order as an order that a trader submits to exchange without intention of execution, instead aiming to distort other market participants' perception of asset's price by providing misleading information about true demand or supply of a asset. 
+
+% Defining spoofing order
+
+% EU Market Abuse regulation
+The market abuse regulation set by European Council states "market manipulation shall comprise ... a transaction, placing an order to trade or any other behaviour which: (i) gives, or is likely to give, false or misleading signals as to the supply of, demand for, or price of, a financial instrument ..." \autocite{EU-596-2014} In accordance with the market abuse regulation spoofing behaviour is indisputably prohibited method of market manipulation.
+
+% Jarrow's categorization
+Allen and Gale categorized market manipulation into action-based, information-based and transaction-based manipulation as follows:
+\begin{enumerate}
+	\item \textit{action-based manipulation} is based on external actions (other than trading) that can influence price of an asset.
+	\item \textit{information-based manipulation} is based on releasing false information to affect price of an asset.
+	\item \textit{transaction-based manipulation}	is based on manipulator affecting price of an asset through trading.\autocite*{AllenGale1992}
+\end{enumerate}
+
+% Another category by Kong and Wang
+Kong and Wang \cite*{KongWang2013} introduced another category of manipulation, namely order-based manipulation which involves order actions but not trade actions. They further asserted 
+
+% Redundancy of the categorization by Kong and Wang
+However I will argue this further classification is redundant. In Allen and Gale's categorization transaction-based manipulation can be interpret as manipulation that is not neither action-based nor information-based, that is manipulation without any external actions or information. Consequently making spoofing as a form of transaction-based manipulation, rather than belonging to a new category of manipulation on its own.
+
+% Conclusion about categorization
+In conclusion, regardless of whether applying further categorization by Kong and Wang or not, it is more significant to remark what spoofing behaviour is not. Spoofing behaviour does not belong neither action-based nor information-based manipulation, for this reason it is manipulation that does not contain any external actions taken nor exploitation of information outside of trading. As a consequence, the analysis of spoofing behaviour solely on trading data is justified.
+
+% Difference to speculation
+
+% Difference to cornering the market
+
+\chapter{Unsupervised anomaly detection}
+\textbf{PLAN:} Overall introduction to anomaly detection, 3-5 pages
+Intro to:
+- what is anomaly detection
+- detection methods: supervised, semi-supervised and unsupervised anomaly detection
+- anomaly types: global and local
+
+\section{Application constraints}
+\textbf{PLAN:} Note characteristics of anomaly detection in stock exchanges in order to be applicable, (time series, big data), 1 page
+
+\subsection{Detection in time series}
+\textbf{PLAN:} time-dependency and seasonality (non-stationary), transformation of data (paper from English Uni by Chinese), 2-3 pages
+- point anomalies, collective anomalies, contextual anomalies
+
+\subsection{Detection in big data}
+\textbf{PLAN:} Issues with big data, 2-4 pages
+% Introduction
+Stock exchange data is prime example of XXX with big data issues.
+
+%characteristics of big data, namely 3Vs
+%https://blogs.gartner.com/doug-laney/files/2012/01/ad949-3D-Data-Management-Controlling-Data-Volume-Velocity-and-Variety.pdf
+Laney \autocite*{Laney2001} lists volume, velocity and variety as defining characters of big data. 
+\textit{Volume} refers to the big amount of data.
+\textit{Velocity} refers to the great speed at which data is created.
+\textit{Variety} of big data refers to inconsistency of data from different sources. 
+
+% Application to stock exchanges
+Application field of stock exchanges ticks off two of the three defining characteristics of big data, both great volume and velocity of big data bring challenges to developers. Variety is not so big factor
+
+% Challenges by big volume
+- can't handle at once
+
+% Challenges by great velocity
+- constant stream of data
+- online detection system
+
+% Taulukko algoritmien soveltuvuudesta big dataan?
+
+\section{Methods}
+\textbf{PLAN:} Explanation of available methods, estimate how well they work in big data and time-series, length depends on the level of details. However these kinds of classifications are vague and generalisations are hard to make, since the algorithms, even in the same subcategory, are very different. 
+\textbf{QUESTION:} Should I introduce many different kinds of methods or just the I will apply in this thesis? (see below for categorization)
+
+- different types of methods (that are only used in this thesis or all kinds of?)
+\begin{enumerate}
+	\item Classification based: classifier is trained to detect normal data, if new data point has extreme value it is likely to be anomaly
+	\item Clustering based: divide data into clusters, check if new data point belongs to any major clusters, anomalies should be separate 
+	\item Nearest neighbour based: data points are given anomaly score, new data has the same score as its' neighbours
+	\item Statistical based: make statistical analysis of data, i.e. according to some distribution, outliers are likely to be anomalies
+	\item Subspace based: create new features of data sets, if new features cannot predict new data point it is likely to be anomaly
+\end{enumerate}
+
+\chapter{Results}
+\textbf{PLAN:} Explain practical research process, maybe 2-4 pages
+- imbalance in demand and supply lead to favourable price change which can be further exploited
+
+In the context of this research, a case of spoofing trading is considered as follows: Firstly manipulator in order to distort asset prices submits a limit order to supply fake information to the market about the asset. Then after favourable change in price of the asset, manipulator makes her real trade. Subsequently she cancels original limit order hoping that the price will recover, and she is able to ???
+
+In order to empirically study spoof trading, we need to address a few nuances that arise from this scenario. What are defining characteristics of these two intervening order, how they are interconnected; what are the favourable changes in prices; ???. 
+
+Manipulator has two two courses of actions, she either attempts to deflate or to inflate the price of an asset. In the case of price of asset falls as a consequence of market manipulation, market had excess supply of the assets, so manipulator submitted an sell side limit order. 
+
+In this study it is not possible to identify these two separate orders by trader since order information is anonymous. As a result, 
+
+Since it is not possible to determine whether manipulator was or was not able to gain profit through her manipulation, the main phase of this thesis is study are there cases in the data where trade imbalances lead to predictable price behaviour.
+
+\textbf{PLAN:} Introduction of results case by case, 2-4 pages per stock
+\section{Atlas Copco A}
+\section{Metso Oyj}
+\section{Nokian Renkaat Oyj}
+\section{Vestas Wind Systems}
+\section{Volvo B}
+
+\section{Summary}
+\textbf{PLAN:} Write out summary of cases, about 4 pages
+
+\chapter{Conclusion}
+\textbf{PLAN:} Final conclusion: results, generalization, further research, 2-3 pages
+
+% all entries that are cited automatically appear in the bibliography
+\begingroup
+\let\itshape\upshape
+\printbibliography{}
+\endgroup
+\end{document}
