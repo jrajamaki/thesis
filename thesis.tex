@@ -213,16 +213,70 @@ Financial markets are divided into exchange-traded markets and over-the-counter 
 % limit and market orders
 In exchange-traded markets traders mainly submit limit orders or market orders to buy and sell financial assets. In limit orders trader makes a bid to buy or sell a decided amount of financial instruments at a maximum purchase price or minimum selling price. Market order buys a financial instrument at lowest selling prices or sells one at the highest buying prices, all until whole volume of the market order is consumed. 
 
-% Trading periods: Pre-open session, crossing, continuous trading, pre-close, post-trading, after-market
-% Market maker
+% Ability to cancel a trade at will
+% Ticker and ISIN
+% Trading only within a market, no-cross market trading is possible
 
 \section{Market micro-structure}
 \textbf{PLAN:} Explain how trading works, how the price of an asset is formed
 % intro
 
 % Order book
+Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset. Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset. Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset.
 
-% Trading
+\ctable[
+	caption={An order book example.},
+	label={table:order_book},
+	width=0.45\textwidth]
+	{ccc}{}{
+	\toprule
+	Price 			& Quantity		& Order type		\\
+	\midrule
+	54.50			& 5000			& SELL			\\
+	\textbf{54.40}	& \textbf{1000}	& \textbf{SELL}	\\
+	54.30			& 2000			& BUY			\\
+	54.10			& 10000			& BUY			\\
+	\bottomrule
+}
+
+Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset. Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset. Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset.
+
+\begin{center}
+\begin{minipage}{.45\textwidth}
+\ctable[
+	caption={Example order book after new buy-side limit order of 2500 units at 54.20.},
+	label=table:new_limit_order,
+	pos=H,left]{c>{\raggedright}cc}{}{
+	\toprule
+	Price 			& Quantity		& Order type		\\
+	\midrule
+	54.50			& 5000			& SELL			\\
+	\textbf{54.40}	& \textbf{1000}	& \textbf{SELL}	\\
+	54.30			& 2000			& BUY			\\
+	54.20			& 2500			& BUY			\\
+	54.10			& 10000			& BUY			\\
+	\bottomrule
+	}
+\end{minipage}%THIS COMMENT IS SIGNIFICANT
+\begin{minipage}{.45\textwidth}
+\ctable[
+	caption={Example order book after new sell-side market order of 1500 units.},
+	label=table:new_market_order,
+	pos=H,right]{c>{\raggedright}cc}{}{
+	\toprule
+	Price 			& Quantity		& Order type		\\
+	\midrule
+	54.50			& 5000			& SELL			\\
+	54.40			& 1000			& SELL			\\
+	\textbf{54.30}	& \textbf{500}	& \textbf{BUY}	\\
+	54.20			& 2500			& BUY			\\
+	54.10			& 10000			& BUY			\\
+	\bottomrule
+	}
+\end{minipage}
+\end{center}
+
+% Trading process
 - four? pictures of stock trading: vanha tilanne, uusi limit order, uusi market order, uusi tilanne 
 
 % Market function: price discovery 
@@ -235,6 +289,10 @@ One of the most important functions of market exchange is price discovery proces
 % https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwj19sTHxb3YAhVFJJQKHeY5AucQFgglMAA&url=http%3A%2F%2Fwww.springer.com%2Fcda%2Fcontent%2Fdocument%2Fcda_downloaddocument%2F9783540888017-c1.pdf%3FSGWID%3D0-0-45-690899-p173864254&usg=AOvVaw2XFH8kToKPU-xiEfgJLpye
 % https://www.springerprofessional.de/en/introduction-to-market-microstructure/3026632
 % O'Hara ??
+
+% IDEAS
+% Trading periods: Pre-open session, crossing, continuous trading, pre-close, post-trading, after-market
+% Priority at trading
 
 \section{Spoof trading}
 \textbf{PLAN:} Explain spoof trading, confirm its' illegality, define spoofing order
