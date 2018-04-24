@@ -222,7 +222,7 @@ In exchange-traded markets traders mainly submit limit orders or market orders t
 % intro
 
 % Order book
-Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset. Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset. Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset.
+Each asset in the market place generally has many limit orders, both buy and sell side, waiting to be traded. These set of limit orders then creates an order book for the underlying asset. 
 
 \ctable[
 	caption={An order book example.},
@@ -239,7 +239,11 @@ Each asset in the market place generally has many active limit orders, both buy 
 	\bottomrule
 }
 
-Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset. Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset. Each asset in the market place generally has many active limit orders, both buy and sell side, waiting to be consumed. These set of limit orders then creates an order book for the underlying asset.
+% introduce above table
+Table \ref{table:order_book} presents simple order book example. Each row refers to different price, showing aggregated quantity ready to trade for a price level and whether sell or buy FIX. The bold row in the table highlights current market price in this example. Market price of an asset is the price at which latest trade was made at. In the example market price is at 54.40.
+
+% Define tick size
+The changes in the price levels of a order book depend on tick size. FIX
 
 \begin{center}
 \begin{minipage}{.45\textwidth}
@@ -276,10 +280,16 @@ Each asset in the market place generally has many active limit orders, both buy 
 \end{minipage}
 \end{center}
 
-% Trading process
-- four? pictures of stock trading: vanha tilanne, uusi limit order, uusi market order, uusi tilanne 
+% introduce first table: new limit order
+Table \ref{table:new_limit_order} presents order book after a new buy-side limit order of 2500 units at the price level of 54.20 has been submitted. In the order book new row has been created at the price since such price level didn't exist before with the full quantity of 2500 units. Market price of the asset didn't change, the bold row is the same as before, since no trade was made, only the demand was increased.
 
-% Market function: price discovery 
+% Market function: provide liquidity
+
+% introduce second table: new market order
+Table \ref{table:new_market_order} shows order book after, in addition to previous limit order, new sell-side market order of 1500 units was processed. Firstly, the asset was traded at the best buying price which shows as the aggregate demand at 54.30 was decreased by the whole market order size of 1500 units. Secondly, since new trade was made the market price was also adjusted to 54.30, which shows as change in place of bold row in the table.
+
+% Market function: price discovery
+This change in market price is called price discovery process.
 % 1) http://www.nasdaq.com/investing/glossary/p/price-discovery-process
 % 2) http://www.bfjlaward.com/pdf/25919/124-132_Alan_JPM_1021w.pdf
 
