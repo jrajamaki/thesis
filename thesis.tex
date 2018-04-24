@@ -15,8 +15,8 @@
 \usepackage[chapter]{algorithm} % algorithmic environment
 \usepackage[math]{blindtext} % generates pointles text for testing purposes
 \usepackage{enumitem} % for list modifications
-%\usepackage{chngcntr}
-%\counterwithout{table}{chapter} % single running numbering instead of chapter.table_nr
+\usepackage{chngcntr}
+\counterwithout{table}{chapter} % single running numbering instead of chapter.table_nr
 
 % preparatory content
 %\makeglossaries
@@ -42,8 +42,8 @@
 
 \begin{document}
 \maketitle
-
 \frontmatter
+
 \begin{abstract}
 	\blindtext
 \end{abstract}
@@ -55,7 +55,7 @@
 \end{otherlanguage}
 
 \tableofcontents
-%\listoftables
+\listoftables
 %\listoffigures
 %\listofalgorithms
 
@@ -211,7 +211,7 @@ Financial market is a market in which its' participants buy and sell financial a
 Financial markets are divided into exchange-traded markets and over-the-counter (OTC) markets. In exchange markets market participants trade exchange standardized contracts while in OTC markets two parties are free to define contracts by themselves. Exchange markets are mainly divided by their geographical location, but also further categorized by the instruments they trade. Most common types of exchange markets include stock markets, bond markets, and various derivatives markets such as futures markets and options markets. \autocite{Hull2017}
 
 % limit and market orders
-In exchange-traded markets traders mainly submit limit orders or market orders to buy and sell financial assets. In limit orders trader makes a bid to buy or sell a decided amount of financial instruments at a maximum purchase price or minimum selling price. Market order buys a financial instrument at lowest selling prices or sells one at the highest buying prices, all until whole volume of the market order is consumed. 
+In exchange-traded markets traders submit limit orders or market orders to buy and sell financial assets. In limit orders trader makes a bid to buy or sell a decided amount of financial instruments at a maximum purchase price or minimum selling price. Market order buys a financial instrument at lowest selling prices or sells one at the highest buying prices, all until whole volume of the market order is consumed. 
 
 % Ability to cancel a trade at will
 % Ticker and ISIN
@@ -226,8 +226,7 @@ Each asset in the market place generally has many limit orders, both buy and sel
 
 \ctable[
 	caption={An order book example.},
-	label={table:order_book},
-	width=0.45\textwidth]
+	label={table:order_book}]
 	{ccc}{}{
 	\toprule
 	Price 			& Quantity		& Order type		\\
@@ -289,11 +288,11 @@ Table \ref{table:new_limit_order} presents order book after a new buy-side limit
 Table \ref{table:new_market_order} shows order book after, in addition to previous limit order, new sell-side market order of 1500 units was processed. Firstly, the asset was traded at the best buying price which shows as the aggregate demand at 54.30 was decreased by the whole market order size of 1500 units. Secondly, since new trade was made the market price was also adjusted to 54.30, which shows as change in place of bold row in the table.
 
 % Market function: price discovery
-This change in market price is called price discovery process.
+This change in market price is called price discovery process. Nasdaq glossary \autocite*{} defines price discovery process as a process that produces the prices of assets in the marketplace through buyers' and sellers' interactions.
+
 % 1) http://www.nasdaq.com/investing/glossary/p/price-discovery-process
 % 2) http://www.bfjlaward.com/pdf/25919/124-132_Alan_JPM_1021w.pdf
 
-One of the most important functions of market exchange is price discovery process. Nasdaq glossary \autocite*{} defines price discovery process as a process that produces the prices of assets in the marketplace through buyers' and sellers' interactions.
 
 % GOOD REFERENCE:
 % https://www.google.com.tw/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwj19sTHxb3YAhVFJJQKHeY5AucQFgglMAA&url=http%3A%2F%2Fwww.springer.com%2Fcda%2Fcontent%2Fdocument%2Fcda_downloaddocument%2F9783540888017-c1.pdf%3FSGWID%3D0-0-45-690899-p173864254&usg=AOvVaw2XFH8kToKPU-xiEfgJLpye
